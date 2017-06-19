@@ -13,7 +13,7 @@ class Settimer extends Component{
 
 
 	minutesToTime(minutes){
-		  let hrs, mins, time, status = false;
+		  let hrs, mins, time, status = false, totalSeconds;
 		  const seconds = 0;  		  
 		  if (minutes < 60){
 		    mins = minutes%60; 
@@ -22,8 +22,9 @@ class Settimer extends Component{
 		  else{
 		    hrs = parseInt(minutes/60); 
 		    mins = minutes%60; 
-		  }		  
-		  time = {hrs,mins,seconds, status}  		  
+		  }		
+		  totalSeconds = hrs*3600 + mins*60 + seconds;   
+		  time = {hrs,mins,seconds, status, totalSeconds}  		  
 		  return time;  
 	}
 
