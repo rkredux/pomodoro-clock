@@ -26,90 +26,60 @@ class App extends Component {
     this.incrementTimer = this.incrementTimer.bind(this); 
     this.stopTimer = this.stopTimer.bind(this); 
     this.resetTimer = this.resetTimer.bind(this); 
-    this.minUpdater = this.minUpdater.bind(this); 
-    // this.hrUpdater = this.hrUpdater.bind(this); 
   }
 
 
   setTime(value){
-    this.newTime = value; //take a snapshot of user time input
+    this.newTime = value; 
     this.totalSeconds = 
     this.setState({
       time:value
     }); 
-    // console.log(this.state.time.status); 
    }
 
 
-  incrementTimer(){
-      this.setState((prevState) => {
-        return {
-          time:{
-            hrs: prevState.time.hrs, 
-            mins: prevState.time.mins, 
-            seconds: prevState.time.seconds -1, 
-            status: true, 
-            totalSeconds: prevState.time.totalSeconds -1
-          }, 
-        }
-      }) 
-    }
-
-
-
-//To do
-//we eventuall need to call this as interval updater
-//runs every 60 seconds and updates the count of the mins 
-//hours 
-  minUpdater(){
-    if (this.state.time.mins > 0){
-      this.setState(function(prevState){
-        return {
-          time: {
-            hrs: prevState.time.hrs,
-            mins: prevState.time.mins -1, 
-            seconds: prevState.time.seconds, 
-            status: prevState.time.status, 
-            totalSeconds: prevState.time.totalSeconds
-          }
-        }
-      })
-    } else{
-      clearInterval(this.minuteUpdater);
-    }
+  
+  secondsToTime(seconds){
+    let hrs, mins, secs;//declaring variables 
+    let tempSec = seconds - 0; //make a copy of the seconds arg
+    hrs = parseInt(tempSec/3600); //hrs is set
+    tempSec = tempSec - hrs*3600; //remove hrs
+    mins = parseInt(tempSec/60);//mins is set
+    tempSec = tempSec - mins*60; //remove mins 
+    secs = tempSec; //seconds is left, set that to secs variable
+    return { hrs, mins, secs } 
   }
 
 
 
+  incrementTimer(){
+    if (this.state.time.totalSeconds > 0){
+      this.setState((prevState) => {
+        const secondsLeft = prevState.time.totalSeconds -1; 
+        const obj = this.secondsToTime(secondsLeft); 
+        return {
+          time:{
+            hrs: obj.hrs, 
+            mins: obj.mins, 
+            seconds: obj.secs, 
+            status: true, 
+            totalSeconds:secondsLeft
+          }, 
+        }
+      });  
+    } else{
+      clearInterval(this.timer); 
+      console.log(this.state.time); 
+    }
+  }
 
-
-//To do
-//Here we need add the functionality 
-//to lower the mins and hr immediately just before the clock starts
-//explore life cycle hooks for this if possible. May be the 
-//transformation is smoother than it is now. 
+  
 
   startTimer(){
     if (!this.state.time.status){
-      if (this.state.time.mins > 0) {
-    this.setState(function(prevState){
-      return{
-        time:{
-          hrs: prevState.time.hrs, 
-          mins: prevState.time.mins -1,
-          seconds: prevState.time.seconds, 
-          status:prevState.time.status, 
-          totalSeconds: prevState.time.totalSeconds, 
-        }
-      }
-    })
-  } 
-
-    this.timer = setInterval(this.incrementTimer.bind(this), 1000);
-    this.minuteUpdater = setInterval(this.minUpdater.bind(this),60000); 
-    // this.hourUpdater = setInterval(this.hrUpdater.bind(this), 3600000)
-  }
+    this.timer = setInterval(this.incrementTimer, 1000);   
     }
+  }
 
 
 
@@ -142,6 +112,8 @@ class App extends Component {
       this.setState(this.baseState); 
     }
     }
+
+
 
 
    render() {
