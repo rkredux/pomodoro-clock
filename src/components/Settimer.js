@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 
 class Settimer extends Component{
 
-
-	//capture the time entered by the user
-	//call the props timer
-
 	constructor(){
 		super(); 
 		this.handleTime = this.handleTime.bind(this); 
@@ -38,9 +34,9 @@ class Settimer extends Component{
 	render(){
 		return(
 			<form className="time-setter" onSubmit={this.handleTime}>
-			  <h2>Set New Time</h2>
+			  <h3>Set New Interval</h3>
 			  <input type="number" min="1" required placeholder="Set Time(minutes)" ref={(input) => this.inputTime = input}/>
-			  <button type="submit">Work Hard</button>
+			  <button type="submit">Set Time</button>
 			</form>
 			); 
 	}
