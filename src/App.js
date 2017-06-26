@@ -30,12 +30,13 @@ class App extends Component {
 
 
   setTime(value){
+    clearInterval(this.timer); 
     this.newTime = value; 
     this.totalSeconds = 
     this.setState({
       time:value
     }); 
-   }
+  }
 
 
   
@@ -111,12 +112,12 @@ class App extends Component {
     }else{
       this.setState(this.baseState); 
     }
-    }
+  }
 
 
 
 
-   render() {
+  render() {
       return (
         <div className="app">
           <Timer time={this.state.time}></Timer>
@@ -124,7 +125,7 @@ class App extends Component {
           <Settimer interval={this.setTime}></Settimer>
         </div>
       );
-    }
+  }
 
 }
 
