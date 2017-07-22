@@ -4,72 +4,99 @@ body {
   font-family: sans-serif;
   /*border: 2px solid black;*/
   height: 100vh;
-  font-size: 20px; }
+  font-size: 20px;
+}
 
-div.app {
+
+
+div.app{
   /*border: 2px solid goldenrod;*/
-  max-width: 300px;
+  max-width: 300px; 
   margin: auto;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 150px; }
+  flex-direction: column; 
+  align-items: center; 
+  margin-top: 150px; 
+}
+
+
 
 /*Timer component styling begins*/
-div.timer {
+div.timer{
+  h2{
+    color: black;  
+    font-family: 'Roboto', sans-serif;
+    text-shadow: .75px .75px 1px black; 
+    font-size: 2rem;
+  }
   width: 100%;
   display: flex;
-  justify-content: space-around; }
-  div.timer h2 {
-    color: black;
-    font-family: 'Roboto', sans-serif;
-    text-shadow: .75px .75px 1px black;
-    font-size: 2rem; }
+  justify-content: space-around;
+}
+
 
 /*control component styling*/
-div.control {
+div.control{
   /*border: 2px solid black;*/
   margin-top: 20px;
-  padding: 2px; }
+  padding: 2px;
+}
 
-div.control button {
+div.control button{
   font-size: 1rem;
   padding: 10px;
-  border-radius: 5px;
+  border-radius: 5px; 
   border: 0;
   margin: 2px;
-  outline: none;
-  cursor: pointer;
-  /*border: 0;*/ }
+  outline: none; 
+  cursor: pointer; 
+  /*border: 0;*/
+}
 
 /*Settimer component styling*/
-form.time-setter {
+form.time-setter{
   /*border: 2px dotted black;*/
   margin-top: 10px;
-  padding: 10px; }
+  padding: 10px;
+}
 
-form.time-setter h3 {
+form.time-setter h3{
   /*border: 2px solid;*/
-  text-align: center;
+  text-align: center; 
   margin: 0;
   font-size: 1.5rem;
   padding: 5px;
-  color: grey; }
+  color: grey;
+}
 
-form.time-setter input {
+form.time-setter input{
   outline: none;
   /*border: 1px solid;*/
   font-size: .9rem;
   /*border-radius: 5px; */
   padding: 10px 0 10px 5px;
-  margin-top: 10px; }
+  margin-top: 10px;
+}
 
-form.time-setter button {
-  outline: none;
+form.time-setter button{
+  outline: none; 
   border: none;
   margin-left: 5px;
   border-radius: 5px;
   font-size: 1rem;
   height: 40px;
   padding: 10px;
-  cursor: pointer; }
+  cursor: pointer; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
